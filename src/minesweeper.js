@@ -26,9 +26,6 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 
   let numberOfBombsPlaced = 0;
 
-  /*The code in this while loop has the potential to place bombs on top
-  of already existing bombs. This will be fixed when I learn about
-  control flow */
   while(numberOfBombsPlaced < numberOfBombs){
     let randomRowIndex = Math.floor(Math.random() * numberOfRows);
     let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
@@ -53,7 +50,6 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
     [1, 1]
   ];
   const numberOfRows = bombBoard.length;
-
   const numberOfColumns = bombBoard[0].length;
   let numberOfBombs = 0;
 
@@ -63,7 +59,6 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
 
       if (neighborRowIndex >= 0 && neighborRowIndex <= numberOfRows &&
       neighborColumnIndex >= 0 && neighborColumnIndex <= numberOfColumns) {
-        // question here
         if (bombBoard[neighborRowIndex][neighborColumnIndex] == 'B') {
           numberOfBombs++;
         }
@@ -79,8 +74,8 @@ const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
     } else if (bombBoard[rowIndex][columnIndex] === 'B') {
       playerBoard[rowIndex][columnIndex] = 'B';
     } else {
-        playerBoard[rowIndex][columnIndex] =
-        getNumberOfNeighborBombs(bombBoard, rowIndex, columnIndex);
+      playerBoard[rowIndex][columnIndex] =
+      getNumberOfNeighborBombs(bombBoard, rowIndex, columnIndex);
     }
 };
 
@@ -95,6 +90,6 @@ console.log('Player Board:');
 printBoard(playerBoard);
 console.log('Bomb Board:');
 printBoard(bombBoard);
-flipTile(playerBoard, bombBoard, 1, -1);
+flipTile(playerBoard, bombBoard, 0, 1);
 console.log('Updated Player Board:');
 printBoard(playerBoard);
