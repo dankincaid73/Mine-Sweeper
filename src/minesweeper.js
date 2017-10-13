@@ -15,7 +15,6 @@ class Game {
     this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
   }
   /**
-  * Game class constructor
   * @method  playMove
   * @param number rowIndex
   * @param number columnIndex
