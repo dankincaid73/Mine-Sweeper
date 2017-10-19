@@ -1,51 +1,9 @@
 /**
-* The Game class handles a players moves and generates game boards
-* @class Game
-*/
-class Game {
-  /**
-  * Game class constructor
-  * @method  constructor
-  * @param number numberOfRows
-  * @param number numberOfColumns
-  * @param number numberOfBombs
-  * Creates new board instance
-  */
-  constructor(numberOfRows, numberOfColumns, numberOfBombs) {
-    this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
-  }
-  /**
-  * @method  playMove
-  * @param number rowIndex
-  * @param number columnIndex
-  * Takes in the position of a player chosen tile
-  * @return console.log of board
-  */
-  playMove(rowIndex, columnIndex) {
-    this._board.flipTile(rowIndex, columnIndex);
-    // Checks if the tile the user has chosen has a bomb on it
-    if (this._board.playerBoard[rowIndex][columnIndex] === 'B') {
-      console.log('This game is over!');
-      this._board.print(this._board.playerBoard);
-      this._board.print(this._board._bombBoard);
-    // Checks if there are any more unflipped tiles
-    } else if (this._board.hasSafeTiles() === false) {
-      console.log('Congratulations!  You\'ve won');
-    // Returns updated Board
-    } else {
-      console.log('Current Board:');
-      this._board.print(this._board.playerBoard);
-      this._board.print(this._board._bombBoard);
-    }
-  }
-};
-
-/**
 * The Board class includes all properties and methods for creating
 * and updating a Mine Sweeper game board
 * @class Board
 */
-class Board {
+export class Board {
   /**
   * Board class constructor
   * @method  constructor
@@ -160,7 +118,3 @@ class Board {
     return board;
   }
 };
-
-let g = new Game(3, 3, 3);
-
-g.playMove(0, 1);
