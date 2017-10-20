@@ -1,23 +1,21 @@
-/**
-*  To play Minesweeper, we will create instances of MineSweeperGame
-*  in command line.
-*  For example:
-*  In the command line, navigate to the lib directory and run `node`
-*  Run `.load game.js` to load the contents of this file.
-*  Then create a Game instance and run commands like so:
-*  let game = new Game(3, 3, 3);
-*  game.playMove(0, 1);
-*  game.playMove(1, 2);
-*  When done run `.exit`
-*/
+//  To play Minesweeper, we will create instances of MineSweeperGame
+//  in command line.
+//  For example:
+//  In the command line, navigate to the lib directory and run `node`
+//  Run `.load game.js` to load the contents of this file.
+//  Then create a Game instance and run commands like so:
+//  let game = new Game(3, 3, 3);
+//  game.playMove(0, 1);
+//  game.playMove(1, 2);
+//  When done run `.exit`
 
+// import Board module from board.js
 import { Board } from './board';
 
 /**
 *  The Game class handles a players moves and generates game boards
 *  @class Game
 */
-
 class Game {
   /**
   * Game class constructor
@@ -30,6 +28,7 @@ class Game {
   constructor(numberOfRows, numberOfColumns, numberOfBombs) {
     this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
   }
+
   /**
   * @method  playMove
   * @param number rowIndex
@@ -43,7 +42,6 @@ class Game {
     if (this._board.playerBoard[rowIndex][columnIndex] === 'B') {
       console.log('This game is over!');
       this._board.print(this._board.playerBoard);
-      this._board.print(this._board._bombBoard);
     // Checks if there are any more unflipped tiles
     } else if (this._board.hasSafeTiles() === false) {
       console.log('Congratulations!  You\'ve won');
@@ -51,9 +49,6 @@ class Game {
     } else {
       console.log('Current Board:');
       this._board.print(this._board.playerBoard);
-      this._board.print(this._board._bombBoard);
     }
   }
 };
-
-let game = new Game(3, 3, 3);
